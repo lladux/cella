@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+main{
+    height: 100%;
+    background-color: rgb(63, 51, 63);
+    
+
+}
+footer{
+    background-color: rgb(19, 19, 46);
+    padding: 3rem;
+    margin-top: auto;
+    
+}
+header{
+    background-color: burlywood;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+dialog{
+    margin-top:auto;
+    margin-bottom: auto;
+    margin-left:auto;
+    margin-right:auto;
+
+
+}
+
+h2{
+    font-size: 2rem;
+    padding: 0%;
+    margin: 0%;
+}
+#errorCella{
+    color: red;
+    margin-top:auto;
+    margin-bottom: auto;
+    margin-left:auto;
+    margin-right:auto;
+}
+.logotipo{
+    display: flex;
+    align-items: center;
+}
+.botonInicio{
+ background-color: rgb(227, 200, 252);
+}
+
+@keyframes header-inicio {
+    0%      {width: 0%;}
+    100%    {width: 100%;}
+}
+@keyframes header-fin {
+    0%      {width: 100%;}
+    100%    {width: 0%;}
+}
+.animacionHead-inicio{
+    animation-name: header-inicio;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.animacionHead-fin{
+    animation-name: header-fin;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#header-botones{
+    overflow: hidden;
+    width: 0%;
+    display: flex;
+    align-items: center;
+}
+.header-menu{
+    white-space: nowrap;
+    justify-content: center;
+    margin-left: 1.5rem;
+    
+
+}
+.contenido{
+    min-height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

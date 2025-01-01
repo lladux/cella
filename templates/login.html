@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio sesion</title>
+    <link rel="icon" href="{% static 'icons/logo.svg' %}" type="image/svg+xml">
+
+</head>
+<body>
+    <center>
+        <form method="post" style="padding-top: 4rem;">
+            {% csrf_token %}
+            <label for="">Usuario</label><br>
+            <input type="text" required name="username"><br>
+            <label for="">contraseña</label><br>
+            <input type="password" required name="password" id=""><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </center>
+</body>
+</html>
