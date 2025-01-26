@@ -3,9 +3,11 @@ from django.views import generic
 from django.contrib.auth import authenticate, login, logout
 from .mangeFiles import DataManage
 from django.http import HttpResponse
-
 from django.contrib.auth.models import User
 
+# APIS Imports
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 import os
 
@@ -95,27 +97,6 @@ def index(request):
     else:
         return redirect('/login')
     
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class InicioSecion(generic.View):
     tamplate_name='login.html'
     user=''
@@ -136,4 +117,17 @@ class InicioSecion(generic.View):
 def cierre(request):
     logout(request)
     return redirect('/login')
+
+
+
+# APIS
+class LoginApi(APIView):
+
+    def get(self, request):
+        context={
+        "ola":2,
+        "fef":"fde",
+        'usuario':str(request.user)
+        }
+        return Response(context)
 

@@ -26,8 +26,7 @@ footer{
 }
 header{
     background-color: burlywood;
-    display: grid;
-    grid-template-columns: 50% 50%;
+
 }
 dialog{
     margin-top:auto;

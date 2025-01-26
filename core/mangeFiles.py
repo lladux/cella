@@ -19,11 +19,13 @@ class DataManage:
             j=j-1
             
         ruta= ruta[::-1]
+        carpMain= os.path.join(ruta,'cellaStorage')
+        print(carpMain)
+        if (not os.path.exists(carpMain)):
+            os.mkdir(carpMain)
 # Verifica si la carpeta existe si no existe la crea
-        user = ruta + str(request.user) 
-        if (os.path.exists(user)):
-            pass
-        else:
+        user = os.path.join(carpMain,str(request.user) )   
+        if (not os.path.exists(user)):
             os.makedirs(user)
         self.ruta = user
 

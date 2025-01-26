@@ -7,5 +7,7 @@ app_name = "core"
 urlpatterns=[
     path('', index, name='index'),
     path('login', InicioSecion.as_view(), name='inicisesion'),
-    path('cierre', cierre, name='cierre')
+    path('cierre', cierre, name='cierre'),
+    path('api', LoginApi.as_view())
+
 ]
