@@ -6,18 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio sesion</title>
     <link rel="icon" href="{% static 'icons/logo.svg' %}" type="image/svg+xml">
-
+    <link rel="stylesheet" href="{% static 'estilos.css' %}">
+    <style>
+        @font-face{
+            font-family: 'AgaveNerdFontMono-Regular';
+            src: url("{% static 'fuente/AgaveNerdFontMono-Regular.ttf' %}") format('truetype');
+        }
+        body{
+            font-family: 'AgaveNerdFontMono-Regular';
+        }
+        
+    </style>
 </head>
-<body>
-    <center>
-        <form method="post" style="padding-top: 4rem;">
-            {% csrf_token %}
-            <label for="">Usuario</label><br>
-            <input type="text" required name="username"><br>
-            <label for="">contraseña</label><br>
-            <input type="password" required name="password" id=""><br>
-            <button type="submit">Enviar</button>
-        </form>
-    </center>
+<body style='background-color: rgb(48, 28, 42); display: flex; align-items: center; justify-content: center;'>
+    <div style="background-color: rgb(70, 27, 54); width: 30%; box-shadow: 5px 5px; border-radius: 0.2em;">
+
+            <form method="post" class="loginForm" >
+                {% csrf_token %}
+                <label class="loginTexto" >Usuario</label>
+                <input class="loginInput" type="text" required name="username">
+    
+                <label class="loginTexto">contraseña</label>
+                <input class="loginInput" type="password" required name="password" id="">
+                <button class="loginButton" type="submit">Acceder</button>
+            </form>
+    </div>
+
 </body>
 </html>

@@ -20,7 +20,6 @@ class DataManage:
             
         ruta= ruta[::-1]
         carpMain= os.path.join(ruta,'cellaStorage')
-        print(carpMain)
         if (not os.path.exists(carpMain)):
             os.mkdir(carpMain)
 # Verifica si la carpeta existe si no existe la crea
@@ -33,7 +32,6 @@ class DataManage:
 
 
     def read(self, rutaAlt=None):
-
         direcs=[]
         archi=[]
         if(rutaAlt==None):

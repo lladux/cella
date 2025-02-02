@@ -82,13 +82,11 @@ def index(request):
                 context=info.read()
                 context['error']='Por el momento no funciona :c'
                 return render(request,'index.html', context)
-
-
+    
                 
-                
-#            else:
-#                context=info.read()
-#                return render(request, 'index.html',context)   
+            else:
+                context=info.read()
+                return render(request, 'index.html',context)   
             
         else:
             context=info.read()
@@ -121,6 +119,7 @@ def cierre(request):
 
 
 # APIS
+
 class LoginApi(APIView):
 
     def get(self, request):

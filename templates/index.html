@@ -114,17 +114,21 @@
             <h2 style="padding-bottom: 0.2rem;">carpetas</h2>
             {% for i in carpetas%}
 
-            <form method="post">
+            <form method="post" style="width:98%; ">
                 {% csrf_token %}
                 {% if ruta %}
                 <input name="root" type='hidden' value="{{ ruta }}">
                 {% endif %}
+                <div style="display:flex; justify-content:space-between; ">
+                    <button class="carpetaLink" name="dir" value="{{ i }}" >{{ i }}</button>
+                    <div>
+                        <button type="button" onclick="renombrar('{{i}}','dir'); ">renombrar</button>
+                        <button type="submit" name='del' value="{{  i }}">borrar</button>            
+                    </div>
+
+                </div>
 
 
-                <button type="button" onclick="renombrar('{{i}}','dir'); ">renombrar</button>
-
-                <button type="submit" name='del' value="{{  i }}">borrar</button>    
-                <button name="dir" value="{{ i }}" >{{ i }}</button>
             </form>
 
            
@@ -134,7 +138,7 @@
   
             <h2 style="padding-top: 0.2rem; padding-bottom: 0.2rem;">archivos</h2>
             {% for i in archivos%}
-            <div style="width:100%; display:flex; justify-content:space-between;">
+            <div class="test">
                 {{ i }}
                 <form method="post" >
                     {% csrf_token %}
