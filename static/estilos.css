@@ -9,17 +9,17 @@ html{
 body{
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
 
 }
 main{
-    height: 100%;
+    min-height: 100%;
     background-color: rgb(63, 51, 63);
     
 
 }
 footer{
-    background-color: rgb(19, 19, 46);
+    background-color: rgb(46, 19, 41);
     padding: 3rem;
     margin-top: auto;
     
@@ -113,6 +113,7 @@ h2{
 .loginTexto{
     color: aliceblue;
     font-weight: bold;
+    padding-bottom: .3em;
 
 }
 .loginInput{
@@ -147,4 +148,41 @@ h2{
     background-color: rgb(199, 165, 199);
     transition-property: all;
     transition-duration: 500ms;
+}
+
+.estiloNavegar{
+    color: aliceblue;
+}
+
+.botonesAccionesCS{
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: .5em;
+    margin: .8em;
+}
+.botonesAccionesCS:hover{
+    color: rgb(218, 218, 218);
+
+
+}
+.selectDatoCSS{
+    margin-bottom: .2em;
+
+
+    align-items: center;
+    }
+.selectDatoCSS:hover{
+
+    background-color: rgb(78, 21, 92);
+
+
+}
+
+.FlesName{
+    overflow: scroll;
+    display: flex;
+    align-items: center;
+    max-height: 2em;
 }

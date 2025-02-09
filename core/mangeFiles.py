@@ -2,6 +2,7 @@ import os
 import shutil
 from django.http import FileResponse
 from django.core.files.storage import FileSystemStorage
+import zipfile
 
 class DataManage:
     def __init__(self, request):
@@ -43,7 +44,7 @@ class DataManage:
             informacion={'carpetas':direcs, 'archivos':archi}
             return informacion   
         else:
-            if(rutaAlt=='..' or rutaAlt=='.' or rutaAlt.find('/')>=0 or rutaAlt.find('\\')>=0):
+            if(rutaAlt=='..' or rutaAlt=='.'):
                 error='Intento de vulnerar el sistema fallido ;)'
                 for i in os.listdir(self.ruta) :
                     if os.path.isdir(os.path.join(self.ruta, i)):
@@ -68,6 +69,13 @@ class DataManage:
         rutaArchivo=os.path.join(rutaActual,archivo)
         file=open(rutaArchivo, 'rb')
         respuesta = FileResponse(file, as_attachment=True)
+        return respuesta
+    
+    def downloadDir(self,nombre,ruta):
+        rutaActual=os.path.join(self.ruta,ruta)
+        rutaArchivo=os.path.join(rutaActual,archivo)
+        Compresor = zipfile.ZipExtFile
+        respuesta = FileResponse(rutaArchivo, as_attachment=True)
         return respuesta
 
 

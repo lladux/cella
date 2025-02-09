@@ -20,6 +20,10 @@ def index(request):
                 ruta=request.POST.get('root')                    
                 return  info.download(request.POST['fileDown'],ruta)
             
+            elif request.POST.get('dirDown'):
+                ruta=request.POST.get('root')                    
+                return  info.downloadDir(request.POST['dirDown'],ruta)
+            
             elif(request.POST.get('dir')):
                 if(request.POST.get('root')==None):
                     context=info.read(request.POST['dir'])
