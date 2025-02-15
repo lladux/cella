@@ -2,7 +2,6 @@ import os
 import shutil
 from django.http import FileResponse
 from django.core.files.storage import FileSystemStorage
-import zipfile
 
 class DataManage:
     def __init__(self, request):
@@ -44,7 +43,7 @@ class DataManage:
             informacion={'carpetas':direcs, 'archivos':archi}
             return informacion   
         else:
-            if(rutaAlt=='..' or rutaAlt=='.'):
+            if(rutaAlt[0]=='.' or rutaAlt[0]=='/' or rutaAlt.find('..')>1):
                 error='Intento de vulnerar el sistema fallido ;)'
                 for i in os.listdir(self.ruta) :
                     if os.path.isdir(os.path.join(self.ruta, i)):
