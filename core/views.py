@@ -99,11 +99,16 @@ def index(request):
     else:
         return redirect('/login')
     
+
+
+# secion    
 class InicioSecion(generic.View):
     tamplate_name='login.html'
     user=''
     contra=''
     def get(self, request):
+        if (request.user.is_authenticated):
+            return redirect('/')
         return render(request, self.tamplate_name)
     def post(self, request):
         if (request.method == "POST"):
@@ -120,7 +125,14 @@ def cierre(request):
     logout(request)
     return redirect('/login')
 
-
+class Registro(generic.View):
+    template_name='registro.html'
+    def get(self, request):
+        if (request.user.is_authenticated):
+            return redirect('/')
+        return render(request, self.template_name)
+    def post(self, request):
+        pass
 
 # APIS
 
@@ -133,4 +145,5 @@ class LoginApi(APIView):
         'usuario':str(request.user)
         }
         return Response(context)
+
 

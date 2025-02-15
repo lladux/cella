@@ -34,7 +34,7 @@ class DataManage:
     def read(self, rutaAlt=None):
         direcs=[]
         archi=[]
-        if(rutaAlt==None):
+        if(rutaAlt==None or rutaAlt==''):
             for i in os.listdir(self.ruta) :
                 if os.path.isdir(os.path.join(self.ruta, i)):
                     direcs.append(i)
@@ -43,7 +43,7 @@ class DataManage:
             informacion={'carpetas':direcs, 'archivos':archi}
             return informacion   
         else:
-            if(rutaAlt[0]=='.' or rutaAlt[0]=='/' or rutaAlt.find('..')>1):
+            if(rutaAlt[0]=='.' or rutaAlt[0]=='/' or rutaAlt.find('..')>=0):
                 error='Intento de vulnerar el sistema fallido ;)'
                 for i in os.listdir(self.ruta) :
                     if os.path.isdir(os.path.join(self.ruta, i)):
@@ -101,7 +101,7 @@ class DataManage:
             shutil.rmtree(ruta, ignore_errors=False)
 
     def createDirectory(self,nombre, ruta=''):  
-        if(nombre=='..' or nombre=='.' or nombre.find('/')>=0 or nombre.find('\\')>=0):
+        if(nombre.find('..')>=0 or nombre=='.' or nombre.find('/')>=0 or nombre.find('\\')>=0):
             return'Ese tipo de carpetas no se permiten: '+ nombre
         rutaActual=os.path.join(self.ruta, ruta)
         archivo=os.path.join(rutaActual, nombre)
@@ -111,8 +111,12 @@ class DataManage:
             os.makedirs(archivo)
 
     def rename(self, tipo, ruta, oldname, newname, extension=None):
+        
+
         diferenteNombre=True
         rutaActual=os.path.join(self.ruta,ruta)
+        if(newname.find('..')>=0 or newname=='.' or newname.find('/')>=0 or newname.find('\\')>=0):
+            return'Ese tipo de nombre no se permiten: '+ newname
         if(oldname!=newname):
             if(tipo=='dir'):
                 for i in os.listdir(rutaActual):

@@ -8,6 +8,7 @@ urlpatterns=[
     path('', index, name='index'),
     path('login', InicioSecion.as_view(), name='inicisesion'),
     path('cierre', cierre, name='cierre'),
+    path('registro', Registro.as_view(), name='registro'),
     path('api', LoginApi.as_view())
 
 ]
