@@ -80,12 +80,13 @@ def index(request):
 
             #intento fallido de subir carpetas
             elif(request.FILES.get('dirUp')):
-#                test=request.FILES.getlist('dirUp')
-#                for i in test:
-#                    print(i)
-                context=info.read()
-                context['error']='Por el momento no funciona :c'
-                return render(request,'index.html', context)
+                data=request.FILES.getlist('dirUp')
+                dataName=request.POST.get('listaArchvios')
+                ruta=request.POST.get('root')
+                validacion=info.uploadDir(data,dataName)
+                context=info.read(ruta)
+                if(validacion!=None): context['error']=validacion
+                return render(request,'index.html',context)
     
                 
             else:

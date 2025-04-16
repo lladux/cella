@@ -17,7 +17,7 @@ function animacionHeader(){
 
 
 function renombrar(viejoNombre,tipodato){`<input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='Tipo' value='${tipodato}'>`
-    const formulario = document.getElementById("renombrarContext")
+    const formulario = document.getElementById("renombrarContext");
     
     if(tipodato==='dir'){
 
@@ -30,3 +30,15 @@ function renombrar(viejoNombre,tipodato){`<input type='hidden' name='oldName' va
 
 
 
+
+function FundirUp(){
+    const inputDirUp = document.getElementById("dirUp");
+    const divArvosLista= document.getElementById("listDataArchivos");
+    let ListaArchivo='';
+    Array.from(inputDirUp.files).forEach((i)=>{
+        ListaArchivo=ListaArchivo+i.webkitRelativePath+'|';
+    })
+    
+    
+    divArvosLista.innerHTML=`<input name='listaArchvios' type='hidden' value='${ListaArchivo}' />`;
+}

@@ -17,7 +17,6 @@ class DataManage:
             if bandera==True:
                 ruta=ruta+i
             j=j-1
-            
         ruta= ruta[::-1]
         carpMain= os.path.join(ruta,'cellaStorage')
         if (not os.path.exists(carpMain)):
@@ -26,6 +25,7 @@ class DataManage:
         user = os.path.join(carpMain,str(request.user) )   
         if (not os.path.exists(user)):
             os.makedirs(user)
+
         self.ruta = user
 
 
@@ -70,14 +70,11 @@ class DataManage:
         respuesta = FileResponse(file, as_attachment=True)
         return respuesta
     
-    def downloadDir(self,nombre,ruta):
-        rutaActual=os.path.join(self.ruta,ruta)
-        rutaArchivo=os.path.join(rutaActual,archivo)
-        Compresor = zipfile.ZipExtFile
-        respuesta = FileResponse(rutaArchivo, as_attachment=True)
-        return respuesta
 
+    def downloadDir(self, nombre, ruta=''):
+        pass
 
+ 
     def backDir(self, ruta):
         nruta=ruta[::-1]
         ruta=''
@@ -165,3 +162,48 @@ class DataManage:
             fileSystemDj=FileSystemStorage(rutaActual)
             fileSystemDj.save(name,data)
 
+
+# Esta funcion solo funiona en windows y linux porque usa / tengo que ver como validar si es / o \
+    def uploadDir(self, data,dataName, ruta=None):
+        if (ruta==None):
+            ruta=''
+        rutaActual=os.path.join(self.ruta, ruta)
+        listData=dataName.split('|')
+        listData.pop()
+        nameDirMother=listData[0].split('/',1)[0]
+        
+        for i in os.listdir(rutaActual):
+                if( i == nameDirMother and os.path.isdir(os.path.join(rutaActual,i))):
+                    return 'existe una carpeta con el mismo nombre'
+                    break
+        
+        datalist=0
+       
+        for filename in listData:
+    
+         
+            PathsFile=filename.split('/')
+            relativefilePath=rutaActual
+            for numpath in range(filename.count("/")):
+                
+                IsPathExist=False
+                for i in os.listdir(relativefilePath):
+                    if( i == PathsFile[numpath] and os.path.isdir(os.path.join(relativefilePath,i))):
+                        relativefilePath= os.path.join(relativefilePath,PathsFile[numpath])
+                        IsPathExist=True
+                        break
+                if (not IsPathExist):
+                    relativefilePath= os.path.join(relativefilePath,PathsFile[numpath])
+                    os.makedirs(relativefilePath)
+            fileSystemDj=FileSystemStorage(relativefilePath)
+            fileSystemDj.save(PathsFile[filename.count("/")],data[datalist])
+            datalist=datalist+1
+            
+
+                
+
+        
+                    
+                
+
+        

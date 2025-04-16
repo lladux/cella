@@ -16,11 +16,12 @@ def obtenerIP():
         conexion.settimeout(0)
         conexion.connect(('8.8.8.8',1))
         ip=conexion.getsockname()[0]
+    except:
+        print('No cuentas con una red por lo cual no poderas conectarte desde otros dispositivos de tu red local :c')
+
     finally:
         conexion.close
-    if ip == None:
-        print('No cuentas con una red por lo cual no poderas conectarte desde otros dispositivos de tu red local :c')
-    else:
+    if ip != None:
         print(' ')
         print('Tu ip es:')
         print('http://'+ip+':8000')
