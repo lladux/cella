@@ -1,7 +1,9 @@
 import os
 import shutil
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponse
+
 from django.core.files.storage import FileSystemStorage
+import zipfile
 
 class DataManage:
     def __init__(self, request):
@@ -63,16 +65,31 @@ class DataManage:
                 return informacion 
         
 
-    def download(self,archivo, ruta):
-        rutaActual=os.path.join(self.ruta,ruta)
-        rutaArchivo=os.path.join(rutaActual,archivo)
-        file=open(rutaArchivo, 'rb')
-        respuesta = FileResponse(file, as_attachment=True)
-        return respuesta
+    def download(self, fileCient, pathClient=''):
+        CurrentPath=os.path.join(self.ruta, pathClient)
+        pathfile=os.path.join(CurrentPath, fileCient)
+        file=open(pathfile, 'rb')
+        response = FileResponse(file, as_attachment=True)
+        return response
     
 
-    def downloadDir(self, nombre, ruta=''):
-        pass
+    def downloadDir(self, pathDir, pathClient=''):
+        try:
+            response=HttpResponse(content_type='application/zip')
+
+            with zipfile.ZipFile(response,'w', zipfile.ZIP_DEFLATED, False) as tmpZip:
+
+                for rootPath, dirs, files in os.walk(os.path.join(self.ruta,pathDir )):
+                    for fileName in files:
+                        tmpZip.write(os.path.join(rootPath, fileName), os.path.relpath(os.path.join(rootPath, fileName),os.path.join(self.ruta,pathDir)))
+                response['Content-Disposition'] = 'attachment; filename={}'.format(pathDir)
+
+                return response
+        except:
+            return {'error':"Por el momento solo podemos realizar zips de maximo 2GB"}
+
+
+
 
  
     def backDir(self, ruta):

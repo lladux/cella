@@ -21,7 +21,7 @@ def index(request):
                 return  info.download(request.POST['fileDown'],ruta)
             
             elif request.POST.get('dirDown'):
-                ruta=request.POST.get('root')                    
+                ruta=request.POST.get('root')      
                 return  info.downloadDir(request.POST['dirDown'],ruta)
             
             elif(request.POST.get('dir')):
@@ -78,7 +78,6 @@ def index(request):
                 context=info.read(ruta)
                 return render(request,'index.html', context)
 
-            #intento fallido de subir carpetas
             elif(request.FILES.get('dirUp')):
                 data=request.FILES.getlist('dirUp')
                 dataName=request.POST.get('listaArchvios')
