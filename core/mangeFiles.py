@@ -92,19 +92,17 @@ class DataManage:
 
 
  
-    def backDir(self, ruta):
-        nruta=ruta[::-1]
-        ruta=''
-        bandera=False
-        j=-1
-        for i in nruta:   
-            if bandera==True:
-                ruta=ruta+i         
-            if bandera==False and(i == '/' or i =='\\'):
-                bandera=True
-            j=j-1         
-        ruta= ruta[::-1]
-        return ruta
+    def backDir(self, path):
+        reversePath=path[::-1]
+        path=''
+        flag=False
+        for i in reversePath:   
+            if flag==True:
+                path=path+i         
+            if flag==False and(i == '/' or i =='\\'):
+                flag=True
+        path= path[::-1]
+        return path
     
     def delete(self, nombre, tipoArchivo, ruta='',):
         nruta = os.path.join(self.ruta, ruta)
