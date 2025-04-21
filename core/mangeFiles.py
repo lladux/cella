@@ -101,6 +101,7 @@ class DataManage:
         path= path[::-1]
         return path
     
+
     def delete(self, nombre, tipoArchivo, ruta='',):
         nruta = os.path.join(self.ruta, ruta)
         ruta= os.path.join(nruta, nombre)
@@ -108,6 +109,7 @@ class DataManage:
             os.remove(ruta)
         else:
             shutil.rmtree(ruta, ignore_errors=False)
+
 
     def createDirectory(self,nombre, ruta=''):  
         if(nombre.find('..')>=0 or nombre=='.' or nombre.find('/')>=0 or nombre.find('\\')>=0):
@@ -119,9 +121,8 @@ class DataManage:
         else:
             os.makedirs(archivo)
 
-    def rename(self, tipo, ruta, oldname, newname, extension=None):
-        
 
+    def rename(self, tipo, ruta, oldname, newname, extension=None):
         diferenteNombre=True
         rutaActual=os.path.join(self.ruta,ruta)
         if(newname.find('..')>=0 or newname=='.' or newname.find('/')>=0 or newname.find('\\')>=0):
@@ -179,25 +180,19 @@ class DataManage:
     def uploadDir(self, data,dataName, ruta=None):
         if (ruta==None):
             ruta=''
-        rutaActual=os.path.join(self.ruta, ruta)
-        listData=dataName.split('|')
-        listData.pop()
-        nameDirMother=listData[0].split('/',1)[0]
-        
-        for i in os.listdir(rutaActual):
-                if( i == nameDirMother and os.path.isdir(os.path.join(rutaActual,i))):
+        newUserPath=os.path.join(self.ruta, ruta)
+        dataList=dataName.split('|')
+        dataList.pop()
+        nameDirMother=dataList[0].split('/',1)[0]
+        for i in os.listdir(newUserPath):
+                if( i == nameDirMother and os.path.isdir(os.path.join(newUserPath,i))):
                     return 'existe una carpeta con el mismo nombre'
                     break
-        
         datalist=0
-       
-        for filename in listData:
-    
-         
+        for filename in dataList:
             PathsFile=filename.split('/')
-            relativefilePath=rutaActual
+            relativefilePath=newUserPath
             for numpath in range(filename.count("/")):
-                
                 IsPathExist=False
                 for i in os.listdir(relativefilePath):
                     if( i == PathsFile[numpath] and os.path.isdir(os.path.join(relativefilePath,i))):
