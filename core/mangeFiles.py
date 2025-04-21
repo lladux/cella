@@ -89,9 +89,6 @@ class DataManage:
             return {'error':"Por el momento solo podemos realizar zips de maximo 2GB"}
 
 
-
-
- 
     def backDir(self, path):
         reversePath=path[::-1]
         path=''
@@ -168,13 +165,13 @@ class DataManage:
 
 
     def uploadFile(self, data, name, ruta, tipo):
-        rutaActual= os.path.join(self.ruta, ruta)
+        newUserPath= os.path.join(self.ruta, ruta)
         if (tipo=='file'):
-            for i in os.listdir(rutaActual):
-                if( i == name and os.path.isdir(os.path.join(rutaActual,i))==False):
+            for i in os.listdir(newUserPath):
+                if( i == name and os.path.isdir(os.path.join(newUserPath,i))==False):
                     return 'el archivo tiene el mismo nombre'
                     break
-            fileSystemDj=FileSystemStorage(rutaActual)
+            fileSystemDj=FileSystemStorage(newUserPath)
             fileSystemDj.save(name,data)
 
 
