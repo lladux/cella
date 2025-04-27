@@ -5,9 +5,6 @@ from .mangeFiles import DataManage
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 
-# APIS Imports
-from rest_framework.views import APIView
-from rest_framework.response import Response
 
 import os
 
@@ -133,17 +130,3 @@ class Registro(generic.View):
         return render(request, self.template_name)
     def post(self, request):
         pass
-
-# APIS
-
-class LoginApi(APIView):
-
-    def get(self, request):
-        context={
-        "ola":2,
-        "fef":"fde",
-        'usuario':str(request.user)
-        }
-        return Response(context)
-
-
