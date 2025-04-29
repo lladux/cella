@@ -4,7 +4,7 @@ import sys
 from io import open
 import secrets
 
-version='0.0.2'
+version='0.1.0'
 error='Sucedio un error probablemente no estas en el entorno virtual o no tienes las dependencias'
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cella.settings')
@@ -41,36 +41,41 @@ def migraciones():
 
 
 def generadorKey():
-    cellakey=open('cellakey','w')
+    cellakey=open('cellakey','x')
     cellakey.write(secrets.token_urlsafe(64))
     cellakey.close()
 
 def generadorInfoCella():
-    registro= open('cella.log','w')
+    registro= open('cella.log','x')
     registro.write(version)
     registro.close()
 
 def ValidacionesArchivos():
-    lista=os.listdir()
-    if 'cella.log' in lista:
-        cellalog=open('cella.log','r')
-        actulaVersion=cellalog.readlines()
-        print(actulaVersion)
-        cellalog.close()   
-        if cellalog == [] or actulaVersion[0] != version:
-            migraciones()
-            generadorInfoCella()
-
-    else:
-        migraciones()
-        generadorInfoCella()
-
-    if 'cellakey' in lista:
-        keys=open('cellakey','r')
-        if keys.read() == '':
-            generadorKey()
-    else:
+    if not os.path.exists(os.path.join(os.getcwd(),'cellakey')):
         generadorKey()
+
+    if not os.path.exists(os.path.join(os.getcwd(),'cella.log')):
+        generadorInfoCella()
+        migraciones()
+        return None
+    
+    currentVersion=open('cella.log','r+')
+    reference=currentVersion.readlines()
+    if reference==[]:
+        currentVersion.write(version)
+        currentVersion.close
+        migraciones()
+        return None
+
+    if reference[0]==version:
+        return None
+    
+    reference[0]=version
+    currentVersion.writelines(reference)
+    currentVersion.close()
+    migraciones()
+    
+
 
 def main():
     ValidacionesArchivos()
