@@ -19,11 +19,12 @@
     </head>
     <body style='background-color: rgb(48, 28, 42); display: flex; align-items: center; justify-content: center;'>
         {% if message %}
-            <dialog open id="message_join_dialog">
-                {{ message }}
-                <button onclick="window.message_join_dialog.close()">cerrar</button>
-            </dialog>
-        {% endif %}
+        <dialog open id="message_join_dialog">
+            {{ message }}
+            <button onclick="window.message_join_dialog.close()">cerrar</button>
+        </dialog>
+    {% endif %}
+        <h1>Bienvenido a cella</h1>
         <div style=" background-color: rgb(70, 27, 54); width: 30%; box-shadow: 5px 5px;display: flex; border-radius: 0.2em; align-items: center; justify-content: center; min-width: 288px; max-width: 288px;">
             
                 <form method="post" class="loginForm" >
@@ -47,7 +48,7 @@
 
                     <button class="loginButton" type="submit">Crear</button>
                 </form>
-                <a href='./login'>Tengo cuenta</a>
+>
 
                 <script>
                     const check1= document.getElementById('MostrarPass1')

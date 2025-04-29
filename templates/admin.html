@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio sesion</title>
+    <title>staff mode</title>
     <link rel="icon" href="{% static 'icons/logo.svg' %}" type="image/svg+xml">
     <link rel="stylesheet" href="{% static 'estilos.css' %}">
     <style>
@@ -15,24 +15,26 @@
         body{
             font-family: 'AgaveNerdFontMono-Regular';
         }
-        
+        *{
+            color:white
+        }
     </style>
 </head>
 <body style='background-color: rgb(48, 28, 42); display: flex; align-items: center; justify-content: center;'>
-   
-    <div style=" background-color: rgb(70, 27, 54); width: 30%; box-shadow: 5px 5px;display: flex; border-radius: 0.2em; align-items: center; justify-content: center; min-width: 288px; max-width: 288px;">
+    {% if pendingUsers  %}
+        {% for i in pendingUsers %}
+        <form method="post">
+            {% csrf_token %}
+            {{i}}
+            <button name='accept' value="{{i}}" type="submit">Aceptar</button>
+            <button name='refuse' value="{{i}}" type="submit">Rechazar</button>
+        </form>
+        {% endfor %}
+    {% else %}
+        <h1> No hay solicitudes </h1>
+    {% endif %}
+    <a href="{% url 'core:index' %}">volver</a>
 
-            <form method="post" class="loginForm" >
-                {% csrf_token %}
-                <label class="loginTexto" >Usuario</label>
-                <input class="loginInput" type="text" required name="username">
-    
-                <label class="loginTexto">contraseña</label>
-                <input class="loginInput" type="password" required name="password" id="">
-                <button class="loginButton" type="submit">Acceder</button>
-            </form>
-            <a href='./join'>Quiero ser parte</a>
-    </div>
 
 </body>
 </html>

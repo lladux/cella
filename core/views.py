@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth import authenticate, login, logout
-from .mangeFiles import DataManage
-from django.http import HttpResponse
+from .managerFiles import DataManage
+from .managePendingUsers import PendingRequest
 from django.contrib.auth.models import User
-
+from .models import PendingUsers
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import user_passes_test
 
 import os
 
@@ -99,11 +101,13 @@ def index(request):
 
 
 # secion    
-class InicioSecion(generic.View):
+class InicioSeion(generic.View):
     tamplate_name='login.html'
     user=''
     contra=''
     def get(self, request):
+        if(User.objects.count() == 0):
+            return redirect('/join')
         if (request.user.is_authenticated):
             return redirect('/')
         return render(request, self.tamplate_name)
@@ -118,15 +122,73 @@ class InicioSecion(generic.View):
             else:
                 return render(request, self.tamplate_name)
 
+
 def cierre(request):
     logout(request)
     return redirect('/login')
 
+
 class Registro(generic.View):
     template_name='registro.html'
+
     def get(self, request):
+        if(User.objects.count() == 0):
+            return render(request, 'crateSuperuser.html')
         if (request.user.is_authenticated):
             return redirect('/')
         return render(request, self.template_name)
+    
     def post(self, request):
-        pass
+        if(User.objects.count() == 0):
+            username=request.POST['username']
+            password1=request.POST['password1']
+            password2=request.POST['password2']
+            email=request.POST['email']   
+            if password1 == password2:
+                User.objects.create_superuser(username=username, email=email, password=password1)
+                check=authenticate(request, username=username, password=password1)
+                if check is not None:
+                    login(request, check)
+                    return redirect('/')
+            else:
+                context={'message':'las contraseñas no coinsiden'}    
+            return render(request, self.template_name, context)
+
+        
+        else:
+            username=request.POST['username']
+            password1=request.POST['password1']
+            password2=request.POST['password2']
+            email=request.POST['email']            
+            userRequest=PendingRequest
+            context=userRequest.savePandingUser(username,password1,password2,email)
+            return render(request, self.template_name, context)
+
+
+def staffCheck(user):
+    return user.is_staff
+
+class AdminIndex(generic.View):
+    template_name = "admin.html"
+    
+
+    @method_decorator(user_passes_test(staffCheck, login_url='/'))
+    def get(self, request):
+
+
+        context={'pendingUsers': PendingUsers.objects.all()}
+        return render(request, self.template_name,context)
+    
+    @method_decorator(user_passes_test(staffCheck, login_url='/'))
+    def post(self, request):
+
+
+        pendingUsers=PendingRequest
+        if(request.POST.get('accept')):
+            pendingUsers.acceptUser(request.POST['accept'])
+        elif(request.POST.get('refuse')):
+            pendingUsers.refuseUser(request.POST['refuse'])
+        context={'pendingUsers': PendingUsers.objects.all()}
+        return render(request, self.template_name, context)
+
+    

@@ -206,11 +206,3 @@ class DataManage:
             fileSystemDj.save(PathsFile[filename.count("/")],data[datalist])
             datalist=datalist+1
             
-
-                
-
-        
-                    
-                
-
-        

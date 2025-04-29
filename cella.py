@@ -4,7 +4,7 @@ import sys
 from io import open
 import secrets
 
-version='0.0.1'
+version='0.0.2'
 error='Sucedio un error probablemente no estas en el entorno virtual o no tienes las dependencias'
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cella.settings')
@@ -55,10 +55,12 @@ def ValidacionesArchivos():
     if 'cella.log' in lista:
         cellalog=open('cella.log','r')
         actulaVersion=cellalog.readlines()
-        cellalog.close()        
-        if actulaVersion == [] or actulaVersion[0] != version:
+        print(actulaVersion)
+        cellalog.close()   
+        if cellalog == [] or actulaVersion[0] != version:
             migraciones()
             generadorInfoCella()
+
     else:
         migraciones()
         generadorInfoCella()

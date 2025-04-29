@@ -40,7 +40,7 @@ source venv/bin/activate
 *En la misma carpeta ingresé el siguiente comando para instalar las dependencias necesarias.*
 
 ```bash
-$ pip install -r requerimientos.txt 
+$ pip install -r requerimientos.txt  
 ```
 <br>
 

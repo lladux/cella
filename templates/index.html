@@ -46,6 +46,9 @@
                 <button onclick="window.subirMenuFile.showModal();" class="header-menu">Subir archivo</button>
                 <button onclick="window.subirMenuDir.showModal();" class="header-menu">Subir carpeta</button>
             </div>
+            {% if user.is_staff %}
+                <a href="{% url 'core:staff' %}">modo staff</a>
+            {% endif %}
         </div>
  
     </header>
