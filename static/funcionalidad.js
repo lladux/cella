@@ -1,29 +1,28 @@
 
-
-
-function animacionHeader(){
-    const animacion=document.getElementById('header-botones');
-    
-    if(!animacion.classList.contains('animacionHead-inicio')){
-        animacion.classList.add('animacionHead-inicio')
-        if(animacion.classList.contains('animacionHead-fin')){
-            animacion.classList.remove('animacionHead-fin')
+function menuResponsive(){
+    const animationMenu= document.getElementById('menuResponsiveID');
+    if(!animationMenu.classList.contains('menuResponsive-Start')){
+        animationMenu.classList.add('menuResponsive-Start');
+        window.scrollTo(0,0)
+        document.body.style.maxHeight='100vh';
+        document.body.style.overflow='hidden'
+        if(animationMenu.classList.contains('menuResponsive-End')){
+            animationMenu.classList.remove('menuResponsive-End');
         }
     }else{
-        animacion.classList.add("animacionHead-fin");
-        animacion.classList.remove('animacionHead-inicio');
+        document.body.style.maxHeight='auto';
+        document.body.style.overflow='auto'
+        animationMenu.classList.add("menuResponsive-End");
+        animationMenu.classList.remove('menuResponsive-Start');
     }
 }
-
-
-function renombrar(viejoNombre,tipodato){`<input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='Tipo' value='${tipodato}'>`
-    const formulario = document.getElementById("renombrarContext");
-    
+//Save old name and type of data in inputs 
+function rename(viejoNombre,tipodato){`<input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='Tipo' value='${tipodato}'>`
+    const form = document.getElementById("renombrarContext");
     if(tipodato==='dir'){
-
-        formulario.innerHTML=`<input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='type' value='${tipodato}'>`;
+        form.innerHTML=`<input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='type' value='${tipodato}'>`;
     }else{
-        formulario.innerHTML=`<input name='extension' checked type="checkbox">Mantener extencion</input> <input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='type' value='${tipodato}'>`;
+        form.innerHTML=`<input name='extension' checked type="checkbox">Mantener extencion</input> <input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='type' value='${tipodato}'>`;
     }
     window.renombrarMenu.showModal()
 }
