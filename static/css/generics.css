@@ -12,9 +12,19 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    height: 100%;
 
 }
-
+.conteiner-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.conteiner-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .button-dark-mode{
     display: flex;
     justify-content: center;
@@ -26,10 +36,7 @@ body{
     border-radius: .4em;
     border-style:none;
     box-shadow: 5px 5px ;
-    transition-duration: 500ms;
-
-    
-
+    transition-duration: 500ms; 
 }
 .button-dark-mode:hover{
     background-color: rgb(199, 165, 199);

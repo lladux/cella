@@ -1,21 +1,18 @@
 
+//Hide or display the menu options
 function menuResponsive(){
     const animationMenu= document.getElementById('menuResponsiveID');
     if(!animationMenu.classList.contains('menuResponsive-Start')){
         animationMenu.classList.add('menuResponsive-Start');
-        window.scrollTo(0,0)
-        document.body.style.maxHeight='100vh';
-        document.body.style.overflow='hidden'
         if(animationMenu.classList.contains('menuResponsive-End')){
             animationMenu.classList.remove('menuResponsive-End');
         }
     }else{
-        document.body.style.maxHeight='auto';
-        document.body.style.overflow='auto'
         animationMenu.classList.add("menuResponsive-End");
         animationMenu.classList.remove('menuResponsive-Start');
     }
 }
+
 //Save old name and type of data in inputs 
 function rename(viejoNombre,tipodato){`<input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='Tipo' value='${tipodato}'>`
     const form = document.getElementById("renombrarContext");

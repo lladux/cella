@@ -25,13 +25,10 @@
                 {% endif %}
             </div>                
         </header>
-
-
         <main>
+<!-- menu full screen --> 
             <span id="menuResponsiveID">
-                <span onclick="menuResponsive()" class='menu-phone-cancel'>
-                    <svg style='margin:2em' xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 24 24"><path fill="currentColor" d="m12 13.4l2.9 2.9q.275.275.7.275t.7-.275t.275-.7t-.275-.7L13.4 12l2.9-2.9q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275L12 10.6L9.1 7.7q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7l2.9 2.9l-2.9 2.9q-.275.275-.275.7t.275.7t.7.275t.7-.275zm0 8.6q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8"/></svg>
-                </span>    
+                <svg onclick="menuResponsive()" class='menu-phone-cancel' style='margin:2em' xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 24 24"><path fill="currentColor" d="m12 13.4l2.9 2.9q.275.275.7.275t.7-.275t.275-.7t-.275-.7L13.4 12l2.9-2.9q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275L12 10.6L9.1 7.7q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7l2.9 2.9l-2.9 2.9q-.275.275-.275.7t.275.7t.7.275t.7-.275zm0 8.6q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8"/></svg>
                 <div class='menu-renameesponsive-buttons'>    
                     <button onclick="window.CrearCarpertaFormulario.showModal()" class="button-dark-mode menu-responsive-buttons"> crear carpeta</button>
                     <button onclick="window.subirMenuFile.showModal();" class="button-dark-mode menu-responsive-buttons">Subir archivo</button>
@@ -42,8 +39,6 @@
                     <a class='button-dark-mode menu-responsive-buttons' href="{% url 'core:cierre' %}">Cerrar sesión</a>
                 </div>    
             </span>
-
-
 <!-- dialogs menu --> 
             <dialog id="CrearCarpertaFormulario">
                 <form method="post">
@@ -83,8 +78,6 @@
                 </form>
                 <button onclick="window.renombrarMenu.close()">cerrar</button>
             </dialog>
-
-
 <!-- error message --> 
         {% if error  %}
             <dialog open id="errorCella">
@@ -92,32 +85,36 @@
                 <button onclick="window.errorCella.close()"> cerrar</button>
             </dialog>
         {% endif %}
-
-            <div style="background-color: rgb(120, 65, 122); ">
-                <center>
-                    {% if ruta %}
-                    <p class="estiloNavegar">Inicio/{{ ruta }}</p>
-                    <form method="post">
+<!-- user path --> 
+            {% if ruta %}
+                <div class='conteiner-between user-path-conteiner'>
+                    <form method="post" >
                         {% csrf_token %}
-                            <button class="botonesAccionesCS"  name="back" value="{{ ruta }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6.325 12.85q-.225-.15-.337-.375T5.874 12t.113-.475t.337-.375l8.15-5.175q.125-.075.263-.112T15 5.825q.4 0 .7.288t.3.712v10.35q0 .425-.3.713t-.7.287q-.125 0-.262-.038t-.263-.112z"/></svg></button>
+                        <button class="botonesAccionesCS"  name="back" value="{{ ruta }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6.325 12.85q-.225-.15-.337-.375T5.874 12t.113-.475t.337-.375l8.15-5.175q.125-.075.263-.112T15 5.825q.4 0 .7.288t.3.712v10.35q0 .425-.3.713t-.7.287q-.125 0-.262-.038t-.263-.112z"/></svg></button>
+                    </form>
+                    <p class="user-path-text" >Inicio/{{ ruta }}</p>
+                    <form method="post" >
+                        {% csrf_token %}
                             <button class="botonesAccionesCS" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4 19v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-3q-.425 0-.712-.288T14 20v-5q0-.425-.288-.712T13 14h-2q-.425 0-.712.288T10 15v5q0 .425-.288.713T9 21H6q-.825 0-1.412-.587T4 19"/></svg></button>
                     </form>
-                        
-                    {% else %}
-                        <p class="estiloNavegar">Inicio</p>
-                    {% endif %}
-                </center> 
-            </div>
+                </div>
 
-<!-- content --> 
-            <div class='contenido'>
-                {% if not carpetas and not archivos %}
+            {% else %}
+                <div class='conteiner-center user-path-conteiner'>
                     <center>
+                        <p class="user-path-text">Inicio</p>
+                    </center> 
+                </div> 
+            {% endif %}
+<!-- content --> 
+                {% if not carpetas and not archivos %}
+                    <div class='conteiner-center' style='height:100%;'>
                         <h2 style='color:white'>No hay documento guardados :c</h2>
-                    </center>
+                    </div>
                 {% endif %}
+<!-- content directories --> 
                 {% if carpetas %}
-                    <h2 style="padding-bottom: 0.2rem;">carpetas</h2>
+                    <h2 class='titles-content'>Carpetas</h2>
                     {% for i in carpetas%}
                         <form class="selectDatoCSS" method="post" style="width:98%; ">
                             {% csrf_token %}
@@ -136,8 +133,9 @@
                         <br>
                     {% endfor %}
                 {% endif %}
+<!-- content files --> 
                 {% if archivos %}
-                    <h2 style="padding-top: 0.2rem; padding-bottom:  0.2rem;">archivos</h2>
+                    <h2 class='titles-content'>Archivos</h2>
                     {% for i in archivos%}
                         <form class="selectDatoCSS" method="post" style="width:98%;">
                             {% csrf_token %}           
@@ -155,10 +153,10 @@
                         <br>
                     {% endfor %}
                 {% endif %}
-            </div>
+    
         </main>
         <footer >
-            <a class='button-dark-mode' href="{% url 'core:cierre' %}">Cerrar</a>
+            <a class='button-dark-mode button-footer' href="{% url 'core:cierre' %}">Cerrar</a>
         </footer> 
     </body>
 </html>

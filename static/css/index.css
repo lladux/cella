@@ -3,11 +3,23 @@ header{
     display: flex;
     justify-content:space-between;
     align-items: center;
-   
-
 }
 body{
-    background-color: rgb(70, 36, 77);
+    background-color: rgb(46, 19, 41);
+    
+}
+main{
+    height: 100%;
+    background-color: rgb(63, 51, 63);
+
+}
+footer{
+    background-color: rgb(46, 19, 41);
+    padding: 3rem;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 /* header */
 .button-cella-dark{
@@ -24,11 +36,9 @@ body{
     user-select: none;
     cursor: pointer;
     transition: all 500ms;
-    
 }
 .button-cella-dark:hover{
     filter:brightness(110%);
-
 }
 .header-buttons{
     padding: 0;
@@ -43,14 +53,15 @@ body{
 }
 .header-buttons-grup{
     display: flex;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     width: 600px;
     padding:.4em;
     transition: all .5s;
 }
-
 /* phone menu */
 .menu-phone-cancel{
+    display: block;
     color: rgb(160, 142, 161);
     filter: drop-shadow( 3px 3px 1px black);
     cursor: pointer;
@@ -58,11 +69,11 @@ body{
 }
 .menu-phone-cancel:hover{
     color: rgb(199, 165, 199);
-
 }
 #menuResponsiveID{
-    position:absolute;
-    overflow: hidden;
+    position:fixed;
+    overflow-x: hidden;
+    overflow-y: scroll;
     top: 0;
     left: 0;
     background-color: rgb(48, 28, 42);
@@ -95,8 +106,8 @@ body{
     align-items: center;
     justify-content: center;
     height: 50vh;
+    padding-bottom: 2em;
 }
-
 .menu-responsive-buttons{
     padding: 0;
     min-width: 130px;
@@ -109,8 +120,31 @@ body{
 }
 
 /* main */
+.user-path-text{
+    color: white;
+    overflow: scroll;
+    text-align: center;
+    margin: 0 .6em;
+}
+.user-path-conteiner{
+    padding: .8em;
+    background-color: rgb(83, 41, 85); 
+}
+.titles-content{
+    text-align: center;
+    color: white;
+    background-color: rgb(75, 29, 69);   
+    margin-bottom: .6em;  
 
 
+}
+.user-directories{
+
+}
+/* footer */
+.button-footer{
+    padding: .5em 2em;
+}
 @media (width<686px){
     /* header */
     .header-buttons-grup{     
@@ -118,4 +152,3 @@ body{
         width: 0px;
     }
 }
-
