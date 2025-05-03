@@ -44,3 +44,20 @@ body{
     transition-duration: 500ms;
 
 }
+
+.button-icons{
+    cursor: pointer;
+    background-color: rgb(160, 142, 161);
+    border-style:none;
+    padding-top: .3em;
+    padding-bottom: .2em;
+    text-align: center;
+    padding-left: .2em;
+    padding-right: .2em;
+    border-radius: .2em;
+    box-shadow: 5px 5px ;
+}
+.button-icons:hover{
+    background-color: rgb(199, 165, 199);
+
+}

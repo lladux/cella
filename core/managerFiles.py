@@ -112,8 +112,11 @@ class DataManage:
 
 
     def createDirectory(self,nombre, ruta=''):  
+        if len(nombre)>80:
+            return 'supero el limite de 80 caracteres'
         if(nombre.find('..')>=0 or nombre=='.' or nombre.find('/')>=0 or nombre.find('\\')>=0):
             return'Ese tipo de carpetas no se permiten: '+ nombre
+
         rutaActual=os.path.join(self.ruta, ruta)
         archivo=os.path.join(rutaActual, nombre)
         if(os.path.exists(archivo)):
@@ -123,6 +126,8 @@ class DataManage:
 
 
     def rename(self, tipo, ruta, oldname, newname, extension=None):
+        if len(newname)>80:
+            return 'supero el limite de 80 caracteres'
         diferenteNombre=True
         rutaActual=os.path.join(self.ruta,ruta)
         if(newname.find('..')>=0 or newname=='.' or newname.find('/')>=0 or newname.find('\\')>=0):
