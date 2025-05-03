@@ -31,6 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Warning: this limits the file size you can upload, and currently there is NO LIMIT
+DATA_UPLOAD_MAX_NUMBER_FILES = None
 
 
 
