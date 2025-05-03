@@ -7,20 +7,21 @@ header{
 }
 body{
     background-color: rgb(46, 19, 41);
+    width: 100%;
     
 }
 main{
-    height: 100%;
-    background-color: rgb(63, 51, 63);
+    background-color: rgb(46, 19, 41);
+
 
 }
 footer{
-    background-color: rgb(46, 19, 41);
+    background-color: rgb(37, 5, 33);
     padding: 3rem;
     margin-top: auto;
     display: flex;
-    flex-direction: column;
-    align-items: end;
+    justify-content: end;
+
 }
 /* header */
 .button-cella-dark{

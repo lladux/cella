@@ -6,6 +6,7 @@
 
 }
 html{
+    min-height:100%;
     height: 100%;
 }
 body{
@@ -59,5 +60,39 @@ body{
 }
 .button-icons:hover{
     background-color: rgb(199, 165, 199);
+
+}
+
+.error-mesagge{
+    border-radius: .4em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 2em;
+    color: rgb(112, 0, 0);
+    border-color: rgb(175, 0, 0);
+
+}
+
+.button-error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 1em;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(175, 0, 0);
+    border-radius: .4em;
+    border-style:none;
+    box-shadow: 5px 5px rgb(112, 0, 0);
+    transition-duration: 500ms; 
+    padding: .3em .8em;
+}
+.button-error:hover{
+    background-color: rgb(199, 2, 2);
+    transition-property: all;
+    transition-duration: 500ms;
 
 }

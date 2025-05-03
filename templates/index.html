@@ -25,6 +25,57 @@
                 {% endif %}
             </div>                
         </header>
+        <!-- dialogs menu --> 
+        <dialog id="CrearCarpertaFormulario">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="DirDelRoot" value="{{ ruta }}">
+                <input required maxlength="80" type="text" name="nameDir">
+                <button type="submit" name="meakedir"> crear </button>
+            </form>
+            <button onclick="window.CrearCarpertaFormulario.close()"> cerrar</button>
+        </dialog>
+        <dialog id="subirMenuDir">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input name="root" type='hidden' value="{{ ruta }}">
+                <input onchange="FundirUp()" id="dirUp" name="dirUp" type="file" webkitdirectory directory multiple>
+                <button  type="submit">enviar</button>
+                <div id="listDataArchivos" ></div>
+            </form>
+            <button onclick="window.subirMenuDir.close();">cerrar</button>
+        </dialog>
+        <dialog id="subirMenuFile">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input name="root" type='hidden' value="{{ ruta }}">
+                <input name="fileUp" type="file"  >
+                <button type="submit">enviar</button>
+            </form>
+            <button onclick="window.subirMenuFile.close();">cerrar</button>
+        </dialog>   
+        <dialog id="renombrarMenu">
+            <form  method="post">
+                {% csrf_token %}
+                <div id="renombrarContext"></div>
+                <input name="root" type='hidden' value="{{ ruta }}">
+                <input name="NewName" maxlength="80" required type="text">
+                <button type="submit" name='rename' >confimar</button>
+            </form>
+            <button onclick="window.renombrarMenu.close()">cerrar</button>
+        </dialog>
+<!-- error message --> 
+        {% if error  %}
+            <dialog  id="errorCella" class='error-mesagge'>
+                <center>
+                    <p>{{ error }}</p>
+                    <button class='button-error' onclick="window.errorCella.close()"> cerrar</button>     
+                </center>
+            </dialog>
+            <script>
+                window.errorCella.showModal();
+            </script>
+        {% endif %}
         <main>
 <!-- menu full screen --> 
             <span id="menuResponsiveID">
@@ -39,52 +90,8 @@
                     <a class='button-dark-mode menu-responsive-buttons' href="{% url 'core:cierre' %}">Cerrar sesión</a>
                 </div>    
             </span>
-<!-- dialogs menu --> 
-            <dialog id="CrearCarpertaFormulario">
-                <form method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="DirDelRoot" value="{{ ruta }}">
-                    <input required maxlength="80" type="text" name="nameDir">
-                    <button type="submit" name="meakedir"> crear </button>
-                </form>
-                <button onclick="window.CrearCarpertaFormulario.close()"> cerrar</button>
-            </dialog>
-            <dialog id="subirMenuDir">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <input name="root" type='hidden' value="{{ ruta }}">
-                    <input onchange="FundirUp()" id="dirUp" name="dirUp" type="file" webkitdirectory directory multiple>
-                    <button  type="submit">enviar</button>
-                    <div id="listDataArchivos" ></div>
-                </form>
-                <button onclick="window.subirMenuDir.close();">cerrar</button>
-            </dialog>
-            <dialog id="subirMenuFile">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <input name="root" type='hidden' value="{{ ruta }}">
-                    <input name="fileUp" type="file"  >
-                    <button type="submit">enviar</button>
-                </form>
-                <button onclick="window.subirMenuFile.close();">cerrar</button>
-            </dialog>   
-            <dialog id="renombrarMenu">
-                <form  method="post">
-                    {% csrf_token %}
-                    <div id="renombrarContext"></div>
-                    <input name="root" type='hidden' value="{{ ruta }}">
-                    <input name="NewName" maxlength="80" required type="text">
-                    <button type="submit" name='rename' >confimar</button>
-                </form>
-                <button onclick="window.renombrarMenu.close()">cerrar</button>
-            </dialog>
-<!-- error message --> 
-        {% if error  %}
-            <dialog open id="errorCella">
-                {{ error }}
-                <button onclick="window.errorCella.close()"> cerrar</button>
-            </dialog>
-        {% endif %}
+
+
 <!-- user path --> 
             {% if ruta %}
                 <div class='conteiner-between user-path-conteiner'>
