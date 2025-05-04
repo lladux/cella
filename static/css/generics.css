@@ -119,3 +119,16 @@ input[type=file]::file-selector-button:hover{
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
+.text-input{
+    border-radius: .3em;
+    box-shadow: 5px 5px ;
+    padding: .2em;
+}
+.input-space{
+    margin-bottom: 1.5em;
+}
+
+.generic-padding-button{
+    padding: .4em 1em;
+}
+

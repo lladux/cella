@@ -6,37 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>staff mode</title>
     <link rel="icon" href="{% static 'icons/logo.svg' %}" type="image/svg+xml">
-    <link rel="stylesheet" href="{% static 'estilos.css' %}">
     <link rel="stylesheet" href="{% static 'css/generics.css' %}">
-
-    <style>
-        @font-face{
-            font-family: 'AgaveNerdFontMono-Regular';
-            src: url("{% static 'fuente/AgaveNerdFontMono-Regular.ttf' %}") format('truetype');
-        }
-        body{
-            font-family: 'AgaveNerdFontMono-Regular';
-        }
-        *{
-            color:white
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
 </head>
-<body style='background-color: rgb(48, 28, 42); display: flex; align-items: center; justify-content: center;'>
+<body style='background-color: rgb(61, 3, 53); color: white; '>
     {% if pendingUsers  %}
-        {% for i in pendingUsers %}
-        <form method="post">
-            {% csrf_token %}
-            {{i}}
-            <button name='accept' value="{{i}}" type="submit">Aceptar</button>
-            <button name='refuse' value="{{i}}" type="submit">Rechazar</button>
-        </form>
-        {% endfor %}
+        <header style="display: flex; justify-content: space-around; margin: 1em; ">
+            <h1>Staff zone</h1>
+            <a class="button-dark-mode generic-padding-button" href="{% url 'core:index' %}">volver</a>
+        </header>
+        <table style="width: 100%;">
+            
+            <tbody>
+                <th style="padding-bottom: 1.2em;">
+                    <t>
+                        <p>
+                            usarios
+                        </p>
+                    </th>
+                    <th>
+                        aciones
+                    </th>
+                </tr>
+                {% for i in pendingUsers %}
+                    <tr class="column-hover " >
+                        <th class="conteiner-center">
+                            <p class="usernames">{{i}}</p>
+                        </th>
+                        <th>
+                            <form method="post" class="coneiner-buttons-actions">
+                                {% csrf_token %}
+                                <button class="button-refuse generic-padding-button" name='refuse' value="{{i}}" type="submit">Rechazar</button>    
+                                <button class="button-accept generic-padding-button" name='accept' value="{{i}}" type="submit">Aceptar</button>
+                            </form>
+                    
+                        </th>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
     {% else %}
-        <h1> No hay solicitudes </h1>
+        <h1 class="conteiner-center"> No hay solicitudes </h1>
+        <a class="button-dark-mode generic-padding-button"  href="{% url 'core:index' %}">volver</a>
     {% endif %}
-    <a href="{% url 'core:index' %}">volver</a>
-
-
 </body>
 </html>

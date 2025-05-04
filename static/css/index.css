@@ -23,6 +23,9 @@ footer{
     justify-content: end;
 
 }
+br{
+    margin-bottom: 1em;
+}
 /* header */
 .button-cella-dark{
     background-color: rgb(237, 211, 255);
@@ -128,6 +131,7 @@ footer{
 }
 .dialogs-names-labels{
     color: white;
+    margin-bottom: 100px;
 }
 .check-input-rename-container{
     color: white;

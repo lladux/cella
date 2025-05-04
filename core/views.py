@@ -120,7 +120,8 @@ class InicioSeion(generic.View):
                 login(request, check)
                 return redirect('/') 
             else:
-                return render(request, self.tamplate_name)
+                context={'error':'las contraseñas o usuario no coinsiden'}    
+                return render(request, self.tamplate_name,context)
 
 
 def cierre(request):
@@ -129,7 +130,7 @@ def cierre(request):
 
 
 class Registro(generic.View):
-    template_name='registro.html'
+    template_name='join.html'
 
     def get(self, request):
         if(User.objects.count() == 0):
@@ -151,7 +152,7 @@ class Registro(generic.View):
                     login(request, check)
                     return redirect('/')
             else:
-                context={'message':'las contraseñas no coinsiden'}    
+                context={'error':'las contraseñas no coinsiden'}    
             return render(request, self.template_name, context)
 
         
@@ -174,15 +175,11 @@ class AdminIndex(generic.View):
 
     @method_decorator(user_passes_test(staffCheck, login_url='/'))
     def get(self, request):
-
-
         context={'pendingUsers': PendingUsers.objects.all()}
         return render(request, self.template_name,context)
     
     @method_decorator(user_passes_test(staffCheck, login_url='/'))
     def post(self, request):
-
-
         pendingUsers=PendingRequest
         if(request.POST.get('accept')):
             pendingUsers.acceptUser(request.POST['accept'])
@@ -190,5 +187,3 @@ class AdminIndex(generic.View):
             pendingUsers.refuseUser(request.POST['refuse'])
         context={'pendingUsers': PendingUsers.objects.all()}
         return render(request, self.template_name, context)
-
-    

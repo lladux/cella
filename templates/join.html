@@ -22,10 +22,7 @@
             </script>
         {% endif %}
         <div class="container-session">
-                <div class="create-first-account">
-                    <h1 style="font-family: monospace;">Bienvenido</h1>
-                    <img style="width: 60px;" src="{% static 'icons/logo.svg' %}" alt="cella-icon">
-                </div>    
+            
                 <form method="post" class="session-form" >
                     {% csrf_token %}
                     <label class="session-label-text" >Usuario</label>
@@ -44,7 +41,8 @@
                     <label class="session-label-text" >Correo</label>
                     <input class="text-input input-space" type="email" required name="email">
 
-                    <button class="button-dark-mode button-session" type="submit">Crear</button>
+                    <button class="button-dark-mode button-session" type="submit">Solicitar</button>
+                    <a class="button-dark-mode button-session" href='./login'>Tengo cuenta</a>
                 </form>
                 <script>
                     const check1= document.getElementById('MostrarPass1')

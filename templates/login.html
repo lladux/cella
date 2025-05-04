@@ -1,38 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio sesion</title>
-    <link rel="icon" href="{% static 'icons/logo.svg' %}" type="image/svg+xml">
-    <link rel="stylesheet" href="{% static 'estilos.css' %}">
-    <style>
-        @font-face{
-            font-family: 'AgaveNerdFontMono-Regular';
-            src: url("{% static 'fuente/AgaveNerdFontMono-Regular.ttf' %}") format('truetype');
-        }
-        body{
-            font-family: 'AgaveNerdFontMono-Regular';
-        }
-        
-    </style>
-</head>
-<body style='background-color: rgb(48, 28, 42); display: flex; align-items: center; justify-content: center;'>
-
-    <div style=" background-color: rgb(70, 27, 54); width: 30%; box-shadow: 5px 5px;display: flex; border-radius: 0.2em; align-items: center; justify-content: center; min-width: 288px; max-width: 288px;">
-
-            <form method="post" class="loginForm" >
-                {% csrf_token %}
-                <label class="loginTexto" >Usuario</label>
-                <input class="loginInput" style="padding: .2em;" type="text" required name="username">
-    
-                <label class="loginTexto">contraseña</label>
-                <input class="loginInput" style="padding: .2em;" type="password" required name="password" id="">
-                <button class="loginButton" type="submit">Acceder</button>
-            </form>
-            <a href='./join'>Quiero ser parte</a>
-    </div>
-
-</body>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio sesion</title>
+        <link rel="icon" href="{% static 'icons/logo.svg' %}" type="image/svg+xml">
+        <link rel="stylesheet" href="{% static 'css/generics.css' %}">
+        <link rel="stylesheet" href="{% static 'css/session.css' %}">
+    </head>
+    <body>
+        {% if error  %}
+        <dialog  id="errorCella" class='error-mesagge'>
+            <center>
+                <p>{{ error }}</p>
+                <button class='button-error' onclick="window.errorCella.close()"> cerrar</button>     
+            </center>
+        </dialog>
+        <script>
+            window.errorCella.showModal();
+        </script>
+        {% endif %}
+        <div class="container-session">
+                <form method="post" class="session-form" >
+                    {% csrf_token %}
+                    <label class="session-label-text" >Usuario</label>
+                    <input class="text-input input-space"  type="text" required name="username">
+                    <label class="session-label-text">contraseña</label>
+                    <input class="text-input input-space" type="password" required name="password" id="">
+                        <button class="button-dark-mode button-session" type="submit">Acceder</button>
+                        <a  class="button-dark-mode button-session" href='./join'>Solicitar una cuenta</a>
+                </form>
+        </div>
+    </body>
 </html>

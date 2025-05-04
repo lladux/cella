@@ -32,7 +32,7 @@
                 <label class="dialogs-names-labels" >Nombre de la carpeta:</label>
                 <br>                
                 <input type="hidden" name="DirDelRoot" value="{{ ruta }}">
-                <input required maxlength="80" type="text" style="padding:.2em;" name="nameDir">
+                <input required maxlength="80" class='text-input' type="text" name="nameDir">
                 <div class='conteiner-between'>
                     <button class='button-dark-mode dialogs-buttons'type="button" onclick="window.CrearCarpertaFormulario.close()"> cerrar</button>
                     <button class='button-dark-mode dialogs-buttons' type="submit" name="meakedir"> crear </button>
@@ -61,8 +61,8 @@
                     <input name="fileUp" type="file">
                 </div>
                 <div class='conteiner-between'>
-                    <button class='button-dark-mode dialogs-buttons' type="submit">enviar</button>
                     <button class='button-dark-mode dialogs-buttons' type="button" onclick="window.subirMenuFile.close();">cerrar</button>
+                    <button class='button-dark-mode dialogs-buttons' type="submit">enviar</button>
                 </div>
             </form>
         </dialog>   
@@ -72,7 +72,7 @@
                 <input name="root" type='hidden' value="{{ ruta }}">
                 <label class="dialogs-names-labels" >Nuevo nombre:</label>
                 <br>
-                <input name="NewName" maxlength="80" required type="text">
+                <input class='text-input' name="NewName" maxlength="80" required type="text">
                 <div id="renombrarContext"></div>
                 <div class='conteiner-between'>
                     <button class='button-dark-mode dialogs-buttons' type="submit" name='rename' >confimar</button>

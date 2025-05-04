@@ -10,6 +10,4 @@ urlpatterns=[
     path('cierre', cierre, name='cierre'),
     path('join', Registro.as_view(), name='join'),
     path('staff', AdminIndex.as_view(), name='staff'),
-
-
 ]

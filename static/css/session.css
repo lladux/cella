@@ -1,0 +1,52 @@
+.session-form{
+    padding: 3em 3em 1em;
+    display: flex;
+    flex-direction: column;
+    max-width: 20em;
+    margin: 1em;
+    align-items: center;
+    background-color: rgb(70, 27, 54);
+    min-width: 288px; 
+    box-shadow: 5px 5px;
+    border-radius: 0.2em; 
+  
+}
+.session-label-text{
+    color: white;
+    font-weight:500;
+    padding: .2em;
+}
+.button-session{
+    padding: .2em 1em;
+    text-align: center;
+    margin-bottom: 2em;
+}
+.container-session{
+    background-color: rgb(48, 28, 42);
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    min-width: 100%;
+    min-height: 100%;
+    overflow: scroll;
+    flex-direction: column;
+}
+
+.container-password{
+    display: flex;
+}
+.check-password{
+    scale:1.5;
+
+    margin-right:.3em;
+
+}
+
+.create-first-account{
+    max-width:60px; 
+    min-width: 288px;  
+    color: white; 
+    display: flex; 
+    align-items: center; 
+    justify-content:space-around;
+}

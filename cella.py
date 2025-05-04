@@ -4,7 +4,7 @@ import sys
 from io import open
 import secrets
 
-version='0.1.0'
+version='0.1.1'
 error='Sucedio un error probablemente no estas en el entorno virtual o no tienes las dependencias'
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cella.settings')
@@ -18,7 +18,6 @@ def obtenerIP():
         ip=conexion.getsockname()[0]
     except:
         print('No cuentas con una red por lo cual no poderas conectarte desde otros dispositivos de tu red local :c')
-
     finally:
         conexion.close
     if ip != None:
