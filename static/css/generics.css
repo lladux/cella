@@ -16,6 +16,21 @@ body{
     height: 100%;
 
 }
+input[type=file]{
+    padding: .3em .6em;
+    cursor: pointer;
+
+}
+input[type=file]::file-selector-button {
+    background-color: rgb(160, 142, 161);
+    border-style: solid;
+    border-radius: .4em;
+    border-color: black;
+}
+input[type=file]::file-selector-button:hover{
+    background-color: rgb(199, 165, 199);
+}
+
 .conteiner-center{
     display: flex;
     justify-content: center;
@@ -27,6 +42,7 @@ body{
     align-items: center;
 }
 .button-dark-mode{
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,5 +110,12 @@ body{
     background-color: rgb(199, 2, 2);
     transition-property: all;
     transition-duration: 500ms;
+}
 
+.dialogs-actions{
+    background-color: rgb(87, 6, 53);
+    padding: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }

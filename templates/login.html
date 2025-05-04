@@ -25,10 +25,10 @@
             <form method="post" class="loginForm" >
                 {% csrf_token %}
                 <label class="loginTexto" >Usuario</label>
-                <input class="loginInput" type="text" required name="username">
+                <input class="loginInput" style="padding: .2em;" type="text" required name="username">
     
                 <label class="loginTexto">contraseña</label>
-                <input class="loginInput" type="password" required name="password" id="">
+                <input class="loginInput" style="padding: .2em;" type="password" required name="password" id="">
                 <button class="loginButton" type="submit">Acceder</button>
             </form>
             <a href='./join'>Quiero ser parte</a>

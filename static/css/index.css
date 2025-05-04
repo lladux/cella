@@ -56,7 +56,7 @@ footer{
 .header-buttons-grup{
     display: flex;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
     width: 600px;
     padding:.4em;
     transition: all .5s;
@@ -75,7 +75,7 @@ footer{
 #menuResponsiveID{
     position:fixed;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
     top: 0;
     left: 0;
     background-color: rgb(46, 19, 41);
@@ -121,12 +121,25 @@ footer{
     white-space: nowrap;
 }
 
+/* dialog */
+.dialogs-buttons{
+    margin-top: 1.5em;
+    padding: .2em .7em;
+}
+.dialogs-names-labels{
+    color: white;
+}
+.check-input-rename-container{
+    color: white;
+    margin-top:1em ;
+}
 /* main */
 .user-path-text{
     color: white;
-    overflow: scroll;
+    overflow-x: scroll;
     text-align: center;
     margin: 0 .6em;
+    white-space: nowrap;
 }
 .user-path-conteiner{
     padding: .8em;
@@ -146,7 +159,7 @@ footer{
     transition: all .5s;
 }
 .user-directories-names{
-    overflow:scroll;
+    overflow-x:scroll;
     margin-left: .5em;
     background-color: rgb(160, 142, 161);
     cursor: pointer;
@@ -154,6 +167,7 @@ footer{
     border-radius: .1em;
     box-shadow: 5px 5px ;
     transition: all .3s;
+    white-space: nowrap;
     
 }
 .user-directories-names:hover{
@@ -175,7 +189,7 @@ footer{
 .title-file{
     color: white;
     padding-left: .8em;
-    overflow: scroll;
+    overflow-x: scroll;
     font-weight:600;
     display: flex;
     white-space: nowrap;

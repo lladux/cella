@@ -17,14 +17,22 @@ function menuResponsive(){
 function rename(viejoNombre,tipodato){`<input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='Tipo' value='${tipodato}'>`
     const form = document.getElementById("renombrarContext");
     if(tipodato==='dir'){
-        form.innerHTML=`<input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='type' value='${tipodato}'>`;
+        form.innerHTML=`
+            <input type='hidden' name='oldName' value='${viejoNombre}'> 
+            <input type='hidden' name='type' value='${tipodato}'>
+        `;
     }else{
-        form.innerHTML=`<input name='extension' checked type="checkbox">Mantener extencion</input> <input type='hidden' name='oldName' value='${viejoNombre}'> <input type='hidden' name='type' value='${tipodato}'>`;
+        form.innerHTML=`
+            <div class='check-input-rename-container'>
+                <input name='extension' checked type="checkbox">
+                <label class='check-input-rename-label'>Mantener extencion</label>
+            </div> 
+            <input type='hidden' name='oldName' value='${viejoNombre}'> 
+            <input type='hidden' name='type' value='${tipodato}'>
+        `;
     }
     window.renombrarMenu.showModal()
 }
-
-
 
 
 function FundirUp(){
