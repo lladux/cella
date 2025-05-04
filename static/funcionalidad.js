@@ -42,7 +42,5 @@ function FundirUp(){
     Array.from(inputDirUp.files).forEach((i)=>{
         ListaArchivo=ListaArchivo+i.webkitRelativePath+'|';
     })
-    
-    
     divArvosLista.innerHTML=`<input name='listaArchvios' type='hidden' value='${ListaArchivo}' />`;
 }

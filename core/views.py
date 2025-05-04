@@ -81,7 +81,7 @@ def index(request):
                 data=request.FILES.getlist('dirUp')
                 dataName=request.POST.get('listaArchvios')
                 ruta=request.POST.get('root')
-                validacion=info.uploadDir(data,dataName)
+                validacion=info.uploadDir(data,dataName,ruta)
                 context=info.read(ruta)
                 if(validacion!=None): context['error']=validacion
                 return render(request,'index.html',context)
