@@ -8,16 +8,13 @@ El sistema puede ser ejecutado
 ```bash
 git clone https://github.com/lladux/cella.git
 ```
-<br>
 
-### 2 Acceder a la carpeta**
+### 2 Acceder a la carpeta.
 ```bash
 cd cella
 ```
 
-<br>
-
-### 3. Crear el entorno virtual
+### 3. Crear el entorno virtual.
 
 *Dentro de la carpeta que clono cree el entorno virtual.*
  [En caso de error, consultar en la documentación oficial.](https://docs.python.org/3/library/venv.html)
@@ -28,9 +25,8 @@ python -m venv venv
 ```bash
 python3 -m venv venv
 ```
-<br>
 
-### 4. Activación del entorno virtual
+### 4. Activación del entorno virtual.
 
 *En la misma carpeta ingresé el siguiente comando para activar el entorno virtual.*
 
@@ -44,15 +40,13 @@ source venv/bin/activate
 ```
 
  [En caso de error, consultar en la documentación oficial.](https://docs.python.org/3/library/venv.html)
-<br>
 
-### 5. Instalar dependencias
+### 5. Instalar dependencias.
 
 *En la misma carpeta ingresé el siguiente comando para instalar las dependencias necesarias.*
 ```bash
 pip install -r requerimientos.txt  
 ```
-<br>
 
 ### 6. Iniciar cella.
 
@@ -67,9 +61,8 @@ python3 cella.py
 ```
 *En caso de error, abra un "issue" para su pronta corrección.*
 
-<br>
 
-### 7. Crear el usuario staff
+### 7. Crear el usuario staff.
 
 Al iniciar el servidor, se mostrarán dos direcciones IP. Utilice la primera: esta será la dirección con la que podrá conectarse desde otros dispositivos.
 
