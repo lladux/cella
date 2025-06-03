@@ -152,7 +152,8 @@ class Registro(generic.View):
                     login(request, check)
                     return redirect('/')
             else:
-                context={'error':'las contraseñas no coinsiden'}    
+                context={'error':'las contraseñas no coinsiden'}  
+                return render(request, 'crateSuperuser.html',context)
             return render(request, self.template_name, context)
 
         
