@@ -1,6 +1,16 @@
 table {
     border-spacing: 10px;
+    width: 100%; 
+    border-spacing: 0 1em;
   }
+
+.admin-body{
+    background-color: rgb(61, 3, 53); 
+    color: white; 
+    display: flex; 
+    flex-direction: column; 
+}
+
 .button-accept{
     margin:.1em .5em;
     display: flex;
@@ -57,7 +67,29 @@ table {
     border-radius: .2em;
     
 }
-
+.conteiner-no-users-request{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+.header-admin{
+    display: flex; 
+    justify-content: space-around; 
+    padding: 1em;
+    background-color: rgb(46, 19, 41);
+}
+.footer-admin{
+    margin-top: auto; 
+    display: flex; 
+    padding: 3em; 
+    justify-content: end;
+    background-color: rgb(37, 5, 33);
+    padding: 3rem;
+    
+}
 .column-hover:hover{
     .usernames{
         background-color:black ;
@@ -67,10 +99,17 @@ table {
         
     }
 }
-
-
-@media(width<447px){
+@media(width<457px){
     .coneiner-buttons-actions{
         flex-direction: column;
+        gap:1em;
+    }
+    .header-admin{
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        gap: 1em;
+        padding-bottom: 1.3em;
+
     }
 }

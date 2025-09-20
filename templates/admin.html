@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="{% static 'css/generics.css' %}">
     <link rel="stylesheet" href="{% static 'css/admin.css' %}">
 </head>
-<body style='background-color: rgb(61, 3, 53); color: white; '>
+<body class="admin-body">
     {% if pendingUsers  %}
-        <header style="display: flex; justify-content: space-around; margin: 1em; ">
+        <header class="header-admin">
             <h1>Staff zone</h1>
             <a class="button-dark-mode generic-padding-button" href="{% url 'core:index' %}">volver</a>
         </header>
-        <table style="width: 100%;">
+        <table >
             
             <tbody>
-                <th style="padding-bottom: 1.2em;">
-                    <t>
+                <tr style="padding-bottom: 1.2em;">
+                    <th>
                         <p>
                             usarios
                         </p>
@@ -46,8 +46,14 @@
             </tbody>
         </table>
     {% else %}
-        <h1 class="conteiner-center"> No hay solicitudes </h1>
-        <a class="button-dark-mode generic-padding-button"  href="{% url 'core:index' %}">volver</a>
+        <div class="conteiner-no-users-request">
+            <h1 class=""> No hay solicitudes </h1>
+            <a class="button-dark-mode generic-padding-button"  href="{% url 'core:index' %}">volver</a>
+        </div>
     {% endif %}
+    <footer class="footer-admin">
+        <a class="button-dark-mode generic-padding-button" href="{% url 'core:index' %}">volver</a>
+
+    </footer>
 </body>
 </html>

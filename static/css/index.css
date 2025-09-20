@@ -53,11 +53,11 @@ br{
     margin: 5px 8px;
     overflow: hidden;
     user-select: none;
-
     white-space: nowrap;
 }
 .header-buttons-grup{
     display: flex;
+    justify-content: end;
     overflow-x: hidden;
     overflow-y: hidden;
     width: 600px;
