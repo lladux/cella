@@ -44,3 +44,5 @@ function FundirUp(){
     })
     divArvosLista.innerHTML=`<input name='listaArchvios' type='hidden' value='${ListaArchivo}' />`;
 }
+
+//drag and drop files

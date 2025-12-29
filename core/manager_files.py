@@ -27,11 +27,7 @@ class DataManage:
         user = os.path.join(carpMain,str(request.user) )   
         if (not os.path.exists(user)):
             os.makedirs(user)
-
         self.ruta = user
-
-
-
 
     def read(self, rutaAlt=None):
         direcs=[]
@@ -63,15 +59,13 @@ class DataManage:
                         archi.append(i)
                 informacion={'carpetas':direcs, 'archivos':archi, "ruta": rutaAlt}
                 return informacion 
-        
 
     def download(self, fileCient, pathClient=''):
         CurrentPath=os.path.join(self.ruta, pathClient)
         pathfile=os.path.join(CurrentPath, fileCient)
         file=open(pathfile, 'rb')
         response = FileResponse(file, as_attachment=True)
-        return response
-    
+        return response    
 
     def downloadDir(self, pathDir, pathClient=''):
         try:
@@ -88,7 +82,6 @@ class DataManage:
         except:
             return {'error':"Por el momento solo podemos realizar zips de maximo 2GB"}
 
-
     def backDir(self, path):
         reversePath=path[::-1]
         path=''
@@ -100,7 +93,6 @@ class DataManage:
                 flag=True
         path= path[::-1]
         return path
-    
 
     def delete(self, nombre, tipoArchivo, ruta='',):
         nruta = os.path.join(self.ruta, ruta)
@@ -109,7 +101,6 @@ class DataManage:
             os.remove(ruta)
         else:
             shutil.rmtree(ruta, ignore_errors=False)
-
 
     def createDirectory(self,nombre, ruta=''):  
         if len(nombre)>80:
@@ -123,7 +114,6 @@ class DataManage:
             return'La carpeta ya existe'
         else:
             os.makedirs(archivo)
-
 
     def rename(self, tipo, ruta, oldname, newname, extension=None):
         if len(newname)>80:
@@ -169,7 +159,6 @@ class DataManage:
         else:
             return "Es el mismo nombre"
 
-
     def uploadFile(self, data, name, ruta, tipo):
         newUserPath= os.path.join(self.ruta, ruta)
         if (tipo=='file'):
@@ -179,7 +168,6 @@ class DataManage:
                     break
             fileSystemDj=FileSystemStorage(newUserPath)
             fileSystemDj.save(name,data)
-
 
 # Esta funcion solo funiona en windows y linux porque usa / tengo que ver como validar si es / o \
     def uploadDir(self, data,dataName, ruta=None):

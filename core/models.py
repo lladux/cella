@@ -1,7 +1,5 @@
 from django.db import models
 
-
-
 class PendingUsers(models.Model):
     UserName    = models.CharField(max_length=30,unique=True)
     password    = models.CharField(max_length=25)

@@ -31,7 +31,7 @@
                 {% csrf_token %}
                 <label class="dialogs-names-labels" >Nombre de la carpeta:</label>
                 <br>                
-                <input type="hidden" name="DirDelRoot" value="{{ ruta }}">
+                <input type="hidden" name="DirDelPath" value="{{ ruta }}">
                 <input required maxlength="80" class='text-input' type="text" name="nameDir">
                 <div class='conteiner-between'>
                     <button class='button-dark-mode dialogs-buttons'type="button" onclick="window.CrearCarpertaFormulario.close()"> cerrar</button>
@@ -42,7 +42,7 @@
         <dialog id="subirMenuDir" class='dialogs-actions'>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input name="root" type='hidden' value="{{ ruta }}">
+                <input name="path" type='hidden' value="{{ ruta }}">
                 <div class="button-dark-mode"  >
                     <input onchange="FundirUp()" id="dirUp" name="dirUp" type="file" webkitdirectory directory multiple>
                 </div>
@@ -56,7 +56,7 @@
         <dialog id="subirMenuFile" class='dialogs-actions'>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input name="root" type='hidden' value="{{ ruta }}">
+                <input name="path" type='hidden' value="{{ ruta }}">
                 <div class="button-dark-mode">
                     <input name="fileUp" type="file">
                 </div>
@@ -69,7 +69,7 @@
         <dialog id="renombrarMenu" class='dialogs-actions'>
             <form  method="post">
                 {% csrf_token %}
-                <input name="root" type='hidden' value="{{ ruta }}">
+                <input name="path" type='hidden' value="{{ ruta }}">
                 <label class="dialogs-names-labels" >Nuevo nombre:</label>
                 <br>
                 <input class='text-input' name="NewName" maxlength="80" required type="text">
@@ -103,11 +103,9 @@
                     {% if user.is_staff %}
                     <a class='button-dark-mode menu-responsive-buttons' href="{% url 'core:staff' %}">modo staff</a>
                     {% endif %}
-                    <a class='button-dark-mode menu-responsive-buttons' href="{% url 'core:cierre' %}">Cerrar sesión</a>
+                    <a class='button-dark-mode menu-responsive-buttons' href="{% url 'core:log_out' %}">Cerrar sesión</a>
                 </div>    
             </span>
-
-
 <!-- user path --> 
             {% if ruta %}
                 <div class='conteiner-between user-path-conteiner'>
@@ -142,7 +140,7 @@
                         <form class="form-buttons" method="post">
                             {% csrf_token %}
                             {% if ruta %}
-                                <input name="root" type='hidden' value="{{ ruta }}">
+                                <input name="path" type='hidden' value="{{ ruta }}">
                             {% endif %}
                             <div class='conteiner-buttons'>
                                 <button class="user-directories-names" name="dir" value="{{ i }}" >{{ i }}</button>
@@ -155,7 +153,6 @@
                         </form>
                     {% endfor %}
                 {% endif %}
-              
 <!-- content files --> 
                 {% if archivos %}
                     <h2 class='titles-content' style='margin-top: .8em;'>Archivos</h2>
@@ -166,7 +163,7 @@
                                 <p class='title-file'> {{ i }} </p>
                                 <div class='subcontainer-buttons'>
                                     <input name="type" type='hidden' value='file'>
-                                    <input name="root" type='hidden' value="{{ ruta }}">
+                                    <input name="path" type='hidden' value="{{ ruta }}">
                                     <button class="button-icons" type="submit" name='fileDown' value="{{  i }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4 22v-2h16v2zm8-4L5 9h4V2h6v7h4z"/></svg></button>    
                                     <button class="button-icons" type="button" onclick="rename('{{i}}','file'); "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2 24v-4h20v4zm2-6v-4.25L15.2 2.575q.275-.275.638-.425T16.6 2t.775.15t.675.45L19.425 4q.3.275.438.65t.137.775q0 .375-.137.738t-.438.662L8.25 18zM16.6 6.8L18 5.4L16.6 4l-1.4 1.4z"/></svg></button>  
                                     <button class="button-icons" type="submit" name='del' value="{{  i }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/></svg></button>  
@@ -177,8 +174,7 @@
                 {% endif %}
         </main>
         <footer >
-            <a class='button-dark-mode button-footer' href="{% url 'core:cierre' %}">Cerrar</a>
+            <a class='button-dark-mode button-footer' href="{% url 'core:log_out' %}">Cerrar</a>
         </footer> 
     </body>
 </html>
-
